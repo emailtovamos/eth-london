@@ -1,0 +1,87 @@
+type EventsSummary {
+  id: ID!
+  accountDeployed: [AccountDeployed!]! @derivedFrom(field: "eventsSummary")
+  accountDeployedsCount: BigInt!
+  deposited: [Deposited!]! @derivedFrom(field: "eventsSummary")
+  depositedsCount: BigInt!
+  signatureAggregatorChanged: [SignatureAggregatorChanged!]! @derivedFrom(field: "eventsSummary")
+  signatureAggregatorChangedsCount: BigInt!
+  stakeLocked: [StakeLocked!]! @derivedFrom(field: "eventsSummary")
+  stakeLockedsCount: BigInt!
+  stakeUnlocked: [StakeUnlocked!]! @derivedFrom(field: "eventsSummary")
+  stakeUnlockedsCount: BigInt!
+  stakeWithdrawn: [StakeWithdrawn!]! @derivedFrom(field: "eventsSummary")
+  stakeWithdrawnsCount: BigInt!
+  userOperationEvent: [UserOperationEvent!]! @derivedFrom(field: "eventsSummary")
+  userOperationEventsCount: BigInt!
+  userOperationRevertReason: [UserOperationRevertReason!]! @derivedFrom(field: "eventsSummary")
+  userOperationRevertReasonsCount: BigInt!
+  withdrawn: [Withdrawn!]! @derivedFrom(field: "eventsSummary")
+  withdrawnsCount: BigInt!
+}
+
+type AccountDeployed {
+  id: ID!
+  userOpHash: String!
+  sender: String!
+  factory: String!
+  paymaster: String!
+  eventsSummary: String!
+}
+type Deposited {
+  id: ID!
+  account: String!
+  totalDeposit: BigInt!
+  eventsSummary: String!
+}
+type SignatureAggregatorChanged {
+  id: ID!
+  aggregator: String!
+  eventsSummary: String!
+}
+type StakeLocked {
+  id: ID!
+  account: String!
+  totalStaked: BigInt!
+  unstakeDelaySec: BigInt!
+  eventsSummary: String!
+}
+type StakeUnlocked {
+  id: ID!
+  account: String!
+  withdrawTime: BigInt!
+  eventsSummary: String!
+}
+type StakeWithdrawn {
+  id: ID!
+  account: String!
+  withdrawAddress: String!
+  amount: BigInt!
+  eventsSummary: String!
+}
+type UserOperationEvent {
+  id: ID!
+  userOpHash: String!
+  sender: String!
+  paymaster: String!
+  nonce: BigInt!
+  success: Boolean!
+  actualGasCost: BigInt!
+  actualGasUsed: BigInt!
+  eventsSummary: String!
+}
+type UserOperationRevertReason {
+  id: ID!
+  userOpHash: String!
+  sender: String!
+  nonce: BigInt!
+  revertReason: String!
+  eventsSummary: String!
+}
+type Withdrawn {
+  id: ID!
+  account: String!
+  withdrawAddress: String!
+  amount: BigInt!
+  eventsSummary: String!
+}

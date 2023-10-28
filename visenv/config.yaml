@@ -1,0 +1,41 @@
+name: EntryPoint
+description: visenv
+networks:
+- id: 1
+  start_block: 0
+  contracts:
+  - name: EntryPoint
+    handler: ./src/EventHandlers.js
+    address:
+    - 0x5FF137D4b0FDCD49DcA30c7CF57E578a026d2789
+    events:
+    - event: AccountDeployed(bytes32 indexed userOpHash, address indexed sender, address factory, address paymaster)
+      requiredEntities:
+      - name: EventsSummary
+    # - event: BeforeExecution()
+    #   requiredEntities:
+    #   - name: EventsSummary
+    - event: Deposited(address indexed account, uint256 totalDeposit)
+      requiredEntities:
+      - name: EventsSummary
+    - event: SignatureAggregatorChanged(address indexed aggregator)
+      requiredEntities:
+      - name: EventsSummary
+    - event: StakeLocked(address indexed account, uint256 totalStaked, uint256 unstakeDelaySec)
+      requiredEntities:
+      - name: EventsSummary
+    - event: StakeUnlocked(address indexed account, uint256 withdrawTime)
+      requiredEntities:
+      - name: EventsSummary
+    - event: StakeWithdrawn(address indexed account, address withdrawAddress, uint256 amount)
+      requiredEntities:
+      - name: EventsSummary
+    - event: UserOperationEvent(bytes32 indexed userOpHash, address indexed sender, address indexed paymaster, uint256 nonce, bool success, uint256 actualGasCost, uint256 actualGasUsed)
+      requiredEntities:
+      - name: EventsSummary
+    - event: UserOperationRevertReason(bytes32 indexed userOpHash, address indexed sender, uint256 nonce, bytes revertReason)
+      requiredEntities:
+      - name: EventsSummary
+    - event: Withdrawn(address indexed account, address withdrawAddress, uint256 amount)
+      requiredEntities:
+      - name: EventsSummary
