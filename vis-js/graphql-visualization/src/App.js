@@ -5,6 +5,8 @@ import EventSummaryChart from './EventSummaryChart';
 import AccountDeployedChart from './AccountDeployedChart';
 import DepositedChart from './DepositedChart';
 import StakeLockedChart from './StakeLockedChart';
+import StakeWithdrawnChart from './StakeWithdrawnChart';
+import UserOperationEventChart from './UserOperationEventChart';
 
 import './App.css';
 
@@ -39,6 +41,12 @@ function App() {
             <button className="summaryButton" onClick={() => setShowChart('StakeLocked')}>
               Stake Locked
             </button>
+            <button className="summaryButton" onClick={() => setShowChart('StakeWithdrawn')}>
+              Stake Withdrawn
+            </button>
+            <button className="summaryButton" onClick={() => setShowChart('UserOperationEvent')}>
+              UserOperationEvent
+            </button>
           </div>
           <div className="chartArea">
             {/* {showEventSummary && <EventSummaryChart />} */}
@@ -46,6 +54,8 @@ function App() {
             {showChart === 'AccountDeployed' && <AccountDeployedChart chartType={chartType}/>}
             {showChart === 'Deposited' && <DepositedChart chartType={chartType}/>}
             {showChart === 'StakeLocked' && <StakeLockedChart chartType={chartType}/>}
+            {showChart === 'StakeWithdrawn' && <StakeWithdrawnChart chartType={chartType}/>}
+            {showChart === 'UserOperationEvent' && <UserOperationEventChart chartType={chartType}/>}
           </div>
           <div className="chartTypeButtons">
             <button onClick={() => setChartType('Bar')}>Bar Chart</button>
