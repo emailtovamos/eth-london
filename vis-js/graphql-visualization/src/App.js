@@ -3,6 +3,8 @@ import { ApolloProvider } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import EventSummaryChart from './EventSummaryChart';
 import AccountDeployedChart from './AccountDeployedChart';
+import DepositedChart from './DepositedChart';
+import StakeLockedChart from './StakeLockedChart';
 
 import './App.css';
 
@@ -31,11 +33,19 @@ function App() {
             <button className="summaryButton" onClick={() => setShowChart('AccountDeployed')}>
               Account Deployed
             </button>
+            <button className="summaryButton" onClick={() => setShowChart('Deposited')}>
+              Deposited
+            </button>
+            <button className="summaryButton" onClick={() => setShowChart('StakeLocked')}>
+              Stake Locked
+            </button>
           </div>
           <div className="chartArea">
             {/* {showEventSummary && <EventSummaryChart />} */}
             {showChart === 'EventSummary' && <EventSummaryChart chartType={chartType}/>}
             {showChart === 'AccountDeployed' && <AccountDeployedChart chartType={chartType}/>}
+            {showChart === 'Deposited' && <DepositedChart chartType={chartType}/>}
+            {showChart === 'StakeLocked' && <StakeLockedChart chartType={chartType}/>}
           </div>
           <div className="chartTypeButtons">
             <button onClick={() => setChartType('Bar')}>Bar Chart</button>
