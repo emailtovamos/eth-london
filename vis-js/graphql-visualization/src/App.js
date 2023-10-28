@@ -18,18 +18,23 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <div className="App">
-        <div className="sidebar">
-          <button className="summaryButton" onClick={() => setShowChart('EventSummary')}>
-            Event Summary
-          </button>
-          <button className="summaryButton" onClick={() => setShowChart('AccountDeployed')}>
-            Account Deployed
-          </button>
+        <div className="header">
+          Data Visualization Dashboard
         </div>
-        <div className="chartArea">
-          {/* {showEventSummary && <EventSummaryChart />} */}
-          {showChart === 'EventSummary' && <EventSummaryChart />}
-          {showChart === 'AccountDeployed' && <AccountDeployedChart />}
+        <div className="content">
+          <div className="sidebar">
+            <button className="summaryButton" onClick={() => setShowChart('EventSummary')}>
+              Event Summary
+            </button>
+            <button className="summaryButton" onClick={() => setShowChart('AccountDeployed')}>
+              Account Deployed
+            </button>
+          </div>
+          <div className="chartArea">
+            {/* {showEventSummary && <EventSummaryChart />} */}
+            {showChart === 'EventSummary' && <EventSummaryChart />}
+            {showChart === 'AccountDeployed' && <AccountDeployedChart />}
+          </div>
         </div>
       </div>
     </ApolloProvider>

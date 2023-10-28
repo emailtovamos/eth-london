@@ -1,6 +1,15 @@
 .App {
   display: flex;
+  flex-direction: column;
   height: 100vh;
+}
+
+.header {
+  background-color: #008CBA;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  font-size: 24px;
 }
 
 .sidebar {
@@ -28,4 +37,9 @@
 .chartArea {
   flex-grow: 1;
   padding: 20px;
+}
+
+.content {
+  display: flex;
+  flex-grow: 1;
 }
