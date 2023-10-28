@@ -14,12 +14,14 @@ const client = new ApolloClient({
 
 function App() {
   const [showChart, setShowChart] = useState(false);
+  const [chartType, setChartType] = useState('Bar');  // New state variable for chart type
+
 
   return (
     <ApolloProvider client={client}>
       <div className="App">
         <div className="header">
-          Data Visualization Dashboard
+          Account Abstraction Data Visualization Dashboard
         </div>
         <div className="content">
           <div className="sidebar">
@@ -32,8 +34,12 @@ function App() {
           </div>
           <div className="chartArea">
             {/* {showEventSummary && <EventSummaryChart />} */}
-            {showChart === 'EventSummary' && <EventSummaryChart />}
-            {showChart === 'AccountDeployed' && <AccountDeployedChart />}
+            {showChart === 'EventSummary' && <EventSummaryChart chartType={chartType}/>}
+            {showChart === 'AccountDeployed' && <AccountDeployedChart chartType={chartType}/>}
+          </div>
+          <div className="chartTypeButtons">
+            <button onClick={() => setChartType('Bar')}>Bar Chart</button>
+            <button onClick={() => setChartType('Pie')}>Pie Chart</button>
           </div>
         </div>
       </div>

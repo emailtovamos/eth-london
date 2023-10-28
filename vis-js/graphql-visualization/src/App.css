@@ -43,3 +43,25 @@
   display: flex;
   flex-grow: 1;
 }
+
+.chartTypeButtons {
+  padding: 10px;
+  text-align: center;
+  background-color: #f0f0f0;
+  border-top: 1px solid #ddd;
+}
+
+.chartTypeButtons button {
+  margin: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #008CBA;
+  color: white;
+  cursor: pointer;
+}
+
+.chartTypeButtons button:hover {
+  background-color: #005f5f;
+}

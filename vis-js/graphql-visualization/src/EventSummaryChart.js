@@ -1,6 +1,6 @@
 import React from 'react';
 import { ApolloClient, InMemoryCache, ApolloProvider, useQuery, gql } from '@apollo/client';
-import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend } from 'recharts';
+import { BarChart, Bar, PieChart, Pie, Cell, XAxis, YAxis, Tooltip, Legend } from 'recharts';
 
 // Set up Apollo Client
 const client = new ApolloClient({
@@ -24,7 +24,9 @@ const GET_EVENT_SUMMARY = gql`
   }
 `;
 
-const EventSummaryChart = () => {
+const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+
+const EventSummaryChart = ({ chartType }) => {
   const { loading, error, data } = useQuery(GET_EVENT_SUMMARY);
 
   if (loading) return <p>Loading...</p>;
@@ -37,13 +39,25 @@ const EventSummaryChart = () => {
   }));
 
   return (
-    <BarChart width={800} height={400} data={summaryData}>
-      <XAxis dataKey="name" />
-      <YAxis />
-      <Tooltip />
-      <Legend />
-      <Bar dataKey="Count" fill="#82ca9d" />
-    </BarChart>
+    chartType === 'Bar' ? (
+      <BarChart width={1200} height={600} data={summaryData}>
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip />
+        <Legend />
+        <Bar dataKey="Count" fill="#82ca9d" />
+      </BarChart>
+    ) : (
+      <PieChart width={1200} height={600}>
+        <Pie dataKey="Count" data={summaryData} cx={400} cy={300} outerRadius={300} label>
+          {
+            summaryData.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)
+          }
+        </Pie>
+        <Tooltip />
+        <Legend />
+      </PieChart>
+    )
   );
 };
 
