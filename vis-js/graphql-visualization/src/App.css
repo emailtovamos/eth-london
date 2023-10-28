@@ -4,11 +4,14 @@
 }
 
 .sidebar {
+  display: flex;
+  flex-direction: column;
   padding: 20px;
   border-right: 1px solid #ddd;
 }
 
 .summaryButton {
+  margin-bottom: 10px;
   padding: 10px 20px;
   font-size: 16px;
   border: none;

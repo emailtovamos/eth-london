@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { ApolloProvider } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import EventSummaryChart from './EventSummaryChart';
+import AccountDeployedChart from './AccountDeployedChart';
+
 import './App.css';
 
 // Set up Apollo Client
@@ -11,18 +13,23 @@ const client = new ApolloClient({
 });
 
 function App() {
-  const [showEventSummary, setShowEventSummary] = useState(false);
+  const [showChart, setShowChart] = useState(false);
 
   return (
     <ApolloProvider client={client}>
       <div className="App">
         <div className="sidebar">
-          <button className="summaryButton" onClick={() => setShowEventSummary(!showEventSummary)}>
+          <button className="summaryButton" onClick={() => setShowChart('EventSummary')}>
             Event Summary
+          </button>
+          <button className="summaryButton" onClick={() => setShowChart('AccountDeployed')}>
+            Account Deployed
           </button>
         </div>
         <div className="chartArea">
-          {showEventSummary && <EventSummaryChart />}
+          {/* {showEventSummary && <EventSummaryChart />} */}
+          {showChart === 'EventSummary' && <EventSummaryChart />}
+          {showChart === 'AccountDeployed' && <AccountDeployedChart />}
         </div>
       </div>
     </ApolloProvider>
