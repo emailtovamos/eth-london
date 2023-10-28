@@ -15,13 +15,13 @@ function App() {
 
   return (
     <ApolloProvider client={client}>
-      <div className="App flex-container">
-        <div className="button-container">
-          <button className="button" onClick={() => setShowEventSummary(!showEventSummary)}>
+      <div className="App">
+        <div className="sidebar">
+          <button className="summaryButton" onClick={() => setShowEventSummary(!showEventSummary)}>
             Event Summary
           </button>
         </div>
-        <div>
+        <div className="chartArea">
           {showEventSummary && <EventSummaryChart />}
         </div>
       </div>
