@@ -25,7 +25,7 @@ function App() {
     <ApolloProvider client={client}>
       <div className="App">
         <div className="header">
-          Account Abstraction Data Visualization Dashboard
+          Account Abstraction Data Visualization Dashboard (0x5FF137D4b0FDCD49DcA30c7CF57E578a026d2789)
         </div>
         <div className="content">
           <div className="sidebar">
